@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import moment from "moment";
-import momentDurationFormatSetup from 'moment-duration-format';
+import momentDurationFormatSetup from "moment-duration-format";
 
-momentDurationFormatSetup(moment)
-
+momentDurationFormatSetup(moment);
 
 const Countdown = ({ workTime }) => {
   const [countdown, setCountdown] = useState(workTime);
 
   // Change countdown when workTime changes
   useEffect(() => {
-    setCountdown(workTime)
+    setCountdown(workTime);
   }, [workTime]);
 
-  const formattedCountdown = moment.duration(countdown, 's').format('mm:ss');
+  const formattedCountdown = moment.duration(countdown, "s").format("mm:ss");
   return <div>{formattedCountdown}</div>;
 };
 
