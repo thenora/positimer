@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Work from './components/Work'
 import Break from './components/Break'
+import Countdown from './components/Countdown'
 import './App.css';
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
         lowerWorkTimeByOneMinute={lowerWorkTimeByOneMinute}
         raiseWorkTimeByOneMinute={raiseWorkTimeByOneMinute}
       />
+      <Countdown />
       <Break
         breakTime={breakTime}
         lowerBreakTimeByOneMinute={lowerBreakTimeByOneMinute}
