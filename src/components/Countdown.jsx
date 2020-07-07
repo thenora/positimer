@@ -27,7 +27,7 @@ const Countdown = ({ workTime }) => {
     }, 1000);
   };
 
-  const formattedCountdown = moment.duration(countdown, "s").format("mm:ss");
+  const formattedCountdown = moment.duration(countdown, "s").format("mm:ss", {trim: false});
   return (
     <div>
       <p>{formattedCountdown}</p>
