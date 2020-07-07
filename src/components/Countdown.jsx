@@ -1,11 +1,8 @@
-import React from 'react'
+import React, { useState } from "react";
 
-const Countdown = () => {
-  return (
-    <div>
-      This is the final countdown!
-    </div>
-  )
-}
+const Countdown = ({ workTime }) => {
+  const [countdown, setCountdown] = useState(workTime);
+  return <div>{countdown}</div>;
+};
 
-export default Countdown
+export default Countdown;

@@ -46,7 +46,9 @@ function App() {
         lowerWorkTimeByOneMinute={lowerWorkTimeByOneMinute}
         raiseWorkTimeByOneMinute={raiseWorkTimeByOneMinute}
       />
-      <Countdown />
+      <Countdown
+        workTime={workTime}
+      />
       <Break
         breakTime={breakTime}
         lowerBreakTimeByOneMinute={lowerBreakTimeByOneMinute}
