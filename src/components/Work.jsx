@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import moment from "moment";
 
 const Work = () => {
   const [workTime, setWorkTime] = useState(300); // time in seconds
@@ -17,10 +18,12 @@ const Work = () => {
     setWorkTime(workTime + 60);
   };
 
+  const workTimeInMinutes = moment.duration(workTime, "s").minutes();
+
   return (
     <div>
       <p id="work-label">Work</p>
-      <p id="work-time">{workTime}</p>
+      <p id="work-time">{workTimeInMinutes}</p>
       <button id="work-lower" onClick={lowerWorkTimeByOneMinute}>
         -
       </button>
