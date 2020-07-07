@@ -6,6 +6,7 @@ import { useEffect } from "react";
 momentDurationFormatSetup(moment);
 
 const Countdown = ({ workTime }) => {
+  const [intervalId, setIntervalId] = useState(null);
   const [countdown, setCountdown] = useState(workTime);
 
   // Change countdown when workTime changes
@@ -13,25 +14,41 @@ const Countdown = ({ workTime }) => {
     setCountdown(workTime);
   }, [workTime]);
 
+  const isStarted = intervalId != null;
   const handleStartStopClick = () => {
-    // lower countdown for each second
-    // 1000 ms is 1 second
-    setInterval(() => {
-      setCountdown((prevCountdown) => {
-        const newCountdown = prevCountdown - 1;
-        if (newCountdown >= 0) {
-          return prevCountdown - 1;
-        }
-        return prevCountdown;
-      });
-    }, 1000);
+    if (isStarted) {
+      // if timer is started
+      // we want to stop and clear
+      clearInterval(intervalId);
+      setCountdown(workTime);
+      setIntervalId(null);
+      // TODO - set so stopping the timer resets it instead of pauses
+    } else {
+      // if timer is stopped:
+      // lower countdown for each second
+      // 1000 ms is 1 second
+      const newIntervalId = setInterval(() => {
+        setCountdown((prevCountdown) => {
+          const newCountdown = prevCountdown - 1;
+          if (newCountdown >= 0) {
+            return prevCountdown - 1;
+          }
+          return prevCountdown;
+        });
+      }, 1000);
+      setIntervalId(newIntervalId);
+    }
   };
 
-  const formattedCountdown = moment.duration(countdown, "s").format("mm:ss", {trim: false});
+  const formattedCountdown = moment
+    .duration(countdown, "s")
+    .format("mm:ss", { trim: false });
   return (
     <div>
       <p>{formattedCountdown}</p>
-      <button onClick={handleStartStopClick}>Start</button>
+      <button onClick={handleStartStopClick}>
+        {isStarted ? "Stop" : "Start"}
+      </button>
     </div>
   );
 };
