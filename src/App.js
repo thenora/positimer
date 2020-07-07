@@ -6,6 +6,7 @@ import './App.css';
 
 function App() {
   const [workTime, setWorkTime] = useState(60 * 25); // time in seconds
+  const [breakTime, setBreakTime] = useState(300);
 
   const lowerWorkTimeByOneMinute = () => {
     const newWorkTime = workTime - 60;
@@ -20,8 +21,6 @@ function App() {
   const raiseWorkTimeByOneMinute = () => {
     setWorkTime(workTime + 60);
   };
-
-  const [breakTime, setBreakTime] = useState(300); // time in seconds
 
   const lowerBreakTimeByOneMinute = () => {
     const newBreakTime = breakTime - 60;
@@ -48,6 +47,7 @@ function App() {
       />
       <Countdown
         workTime={workTime}
+        breakTime={breakTime}
       />
       <Break
         breakTime={breakTime}
