@@ -47,7 +47,7 @@ const Countdown = ({ workTime }) => {
     <div>
       <p>{formattedCountdown}</p>
       <button onClick={handleStartStopClick}>
-        {isStarted ? "Stop" : "Start"}
+        {isStarted ? "Reset" : "Start"}
       </button>
     </div>
   );
