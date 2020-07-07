@@ -1,22 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import moment from "moment";
 
-const Work = () => {
-  const [workTime, setWorkTime] = useState(300); // time in seconds
-
-  const lowerWorkTimeByOneMinute = () => {
-    const newWorkTime = workTime - 60;
-
-    if (newWorkTime < 0) {
-      setWorkTime(0);
-    } else {
-      setWorkTime(newWorkTime);
-    }
-  };
-
-  const raiseWorkTimeByOneMinute = () => {
-    setWorkTime(workTime + 60);
-  };
+const Work = ({
+    workTime,
+    lowerWorkTimeByOneMinute,
+    raiseWorkTimeByOneMinute,
+  }) => {
 
   const workTimeInMinutes = moment.duration(workTime, "s").minutes();
 
