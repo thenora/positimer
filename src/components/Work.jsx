@@ -2,11 +2,10 @@ import React from "react";
 import moment from "moment";
 
 const Work = ({
-    workTime,
-    lowerWorkTimeByOneMinute,
-    raiseWorkTimeByOneMinute,
-  }) => {
-
+  workTime,
+  lowerWorkTimeByOneMinute,
+  raiseWorkTimeByOneMinute,
+}) => {
   const workTimeInMinutes = moment.duration(workTime, "s").minutes();
 
   return (

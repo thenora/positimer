@@ -20,14 +20,36 @@ function App() {
     setWorkTime(workTime + 60);
   };
 
+  const [breakTime, setBreakTime] = useState(300); // time in seconds
+
+  const lowerBreakTimeByOneMinute = () => {
+    const newBreakTime = breakTime - 60;
+
+    if (newBreakTime < 0) {
+      setBreakTime(0);
+    } else {
+      setBreakTime(newBreakTime);
+    }
+  };
+
+  const raiseBreakTimeByOneMinute = () => {
+    setBreakTime(breakTime + 60);
+  };
+
+
   return (
     <div className="App">
+
       <Work
         workTime={workTime}
         lowerWorkTimeByOneMinute={lowerWorkTimeByOneMinute}
         raiseWorkTimeByOneMinute={raiseWorkTimeByOneMinute}
       />
-      <Break />
+      <Break
+        breakTime={breakTime}
+        lowerBreakTimeByOneMinute={lowerBreakTimeByOneMinute}
+        raiseBreakTimeByOneMinute={raiseBreakTimeByOneMinute}
+      />
     </div>
   );
 }
