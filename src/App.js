@@ -87,16 +87,17 @@ function App() {
 
   const handleResetButtonClick = () => {
     // clear the countdown interval
-
+    clearInterval(intervalId)
     // set the intervalId null
-
+    setIntervalId(null)
     // set the timertype to "Work"
-
+    setCurrentTimerType('Work')
     // reset the workTime to 25 minutes
-
+    setWorkTime(25 * 60)
     // reset the breakTime to 5
-
+    setBreakTime(60 * 5)
     // reset the timer to 25 minutes (initial workTime)
+    setCountdown(25 * 60)
   }
 
   const lowerBreakTimeByOneMinute = () => {
@@ -135,7 +136,10 @@ function App() {
         lowerBreakTimeByOneMinute={lowerBreakTimeByOneMinute}
         raiseBreakTimeByOneMinute={raiseBreakTimeByOneMinute}
       />
-    </div>
+      <p>
+      <button id="reset" onClick={handleResetButtonClick}>Reset</button>
+      </p>
+   </div>
   );
 }
 
