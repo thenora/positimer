@@ -5,7 +5,7 @@ import Countdown from './components/Countdown'
 import './App.css';
 
 function App() {
-  const audioElement = useRef(null)
+  const audioElement = useRef(null);
   const [currentTimerType, setCurrentTimerType] = useState("Work");
   const [intervalId, setIntervalId] = useState(null);
   const [workTime, setWorkTime] = useState(60 * 25); // time in seconds
@@ -20,7 +20,7 @@ function App() {
   const lowerWorkTimeByOneMinute = () => {
     const newWorkTime = workTime - 60;
 
-    if (newWorkTime < 0) {
+    if (newWorkTime <= 0) {
       setWorkTime(0);
     } else {
       setWorkTime(newWorkTime);
@@ -28,7 +28,10 @@ function App() {
   };
 
   const raiseWorkTimeByOneMinute = () => {
-    setWorkTime(workTime + 60);
+    const newWorkTime = workTime + 60
+    if (newWorkTime <= 60 * 60) {
+      setWorkTime(newWorkTime)
+    }
   };
 
   const isStarted = intervalId != null;
@@ -115,7 +118,10 @@ function App() {
   };
 
   const raiseBreakTimeByOneMinute = () => {
-    setBreakTime(breakTime + 60);
+    const newBreakTime = breakTime + 60
+    if (newBreakTime <= 60 * 60) {
+      setBreakTime(newBreakTime)
+    }
   };
 
 
@@ -146,7 +152,7 @@ function App() {
       <audio id="alarm" ref={audioElement}>
         <source src="https://www.soundjay.com/misc/sounds/magic-chime-01.mp3" />
       </audio>
-   </div>
+    </div>
   );
 }
 
