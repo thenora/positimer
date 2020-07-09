@@ -6,7 +6,7 @@ const Break = ({
   lowerBreakTimeByOneMinute,
   raiseBreakTimeByOneMinute,
 }) => {
-  const breakTimeInMinutes = moment.duration(breakTime, "s").minutes();
+  const breakTimeInMinutes = moment.duration(breakTime, "s").asMinutes();
 
   return (
     <div>

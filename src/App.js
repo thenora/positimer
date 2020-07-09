@@ -5,7 +5,7 @@ import Countdown from './components/Countdown'
 import './App.css';
 
 function App() {
-  const audioElement = useRef(null)
+  const audioElement = useRef(null);
   const [currentTimerType, setCurrentTimerType] = useState("Work");
   const [intervalId, setIntervalId] = useState(null);
   const [workTime, setWorkTime] = useState(60 * 25); // time in seconds
@@ -19,16 +19,22 @@ function App() {
 
   const lowerWorkTimeByOneMinute = () => {
     const newWorkTime = workTime - 60;
-
-    if (newWorkTime < 0) {
-      setWorkTime(0);
-    } else {
-      setWorkTime(newWorkTime);
+    if (newWorkTime > 0) {
+      setWorkTime(newWorkTime)
     }
+
+    // if (newWorkTime < 0) {
+    //   setWorkTime(0);
+    // } else {
+    //   setWorkTime(newWorkTime);
+    // }
   };
 
   const raiseWorkTimeByOneMinute = () => {
-    setWorkTime(workTime + 60);
+    const newWorkTime = workTime + 60
+    if (newWorkTime <= 60 * 60) {
+      setWorkTime(newWorkTime)
+    }
   };
 
   const isStarted = intervalId != null;
@@ -39,10 +45,10 @@ function App() {
       audioElement.current.play()
       if (currentTimerType === "Work") {
         setCurrentTimerType("Break");
-        setCountdown(breakTime);
+        return breakTime;
       } else if (currentTimerType === "Break") {
         setCurrentTimerType("Work");
-        setCountdown(workTime);
+        return workTime;
       }
     }
   }, [breakTime, currentTimerType, workTime, countdown]);
@@ -63,14 +69,14 @@ function App() {
         setCountdown(prevCountdown => prevCountdown - 1);
         //   const newCountdown = prevCountdown - 1;
         //   if (newCountdown >= 0) {
-        //     return prevCountdown - 1;
+        //     return newCountdown;
         //   }
 
         //   // if work, switch to break
         //   if (currentTimerType === "Work") {
         //     setCurrentTimerType("Break");
         //     // set countdown to breakTime
-        //     setCountdown(breakTime);
+        //     return breakTime;
         //   }
 
         //   // if break, switch to work
@@ -106,16 +112,22 @@ function App() {
 
   const lowerBreakTimeByOneMinute = () => {
     const newBreakTime = breakTime - 60;
-
-    if (newBreakTime < 0) {
-      setBreakTime(0);
-    } else {
-      setBreakTime(newBreakTime);
+    if (newBreakTime > 0) {
+      setBreakTime(newBreakTime)
     }
+
+    // if (newBreakTime < 0) {
+    //   setBreakTime(0);
+    // } else {
+    //   setBreakTime(newBreakTime);
+    // }
   };
 
   const raiseBreakTimeByOneMinute = () => {
-    setBreakTime(breakTime + 60);
+    const newBreakTime = breakTime + 60
+    if (newBreakTime <= 60 * 60) {
+      setBreakTime(newBreakTime)
+    }
   };
 
 
@@ -146,7 +158,7 @@ function App() {
       <audio id="alarm" ref={audioElement}>
         <source src="https://www.soundjay.com/misc/sounds/magic-chime-01.mp3" />
       </audio>
-   </div>
+    </div>
   );
 }
 
