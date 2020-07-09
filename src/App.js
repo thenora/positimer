@@ -20,8 +20,10 @@ function App() {
   const lowerWorkTimeByOneMinute = () => {
     const newWorkTime = workTime - 60;
 
-    if (newWorkTime <= 0) {
+    if (newWorkTime < 0) {
       setWorkTime(0);
+    } else if (newWorkTime === 0) {
+      return
     } else {
       setWorkTime(newWorkTime);
     }
@@ -111,6 +113,8 @@ function App() {
     const newBreakTime = breakTime - 60;
     if (newBreakTime < 0) {
       setBreakTime(0);
+    } else if (newBreakTime === 0) {
+      return
     } else {
       setBreakTime(newBreakTime);
     }
