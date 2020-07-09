@@ -6,7 +6,7 @@ const Work = ({
   lowerWorkTimeByOneMinute,
   raiseWorkTimeByOneMinute,
 }) => {
-  const workTimeInMinutes = moment.duration(workTime, "s").minutes();
+  const workTimeInMinutes = moment.duration(workTime, "s").asMinutes();
 
   return (
     <div>

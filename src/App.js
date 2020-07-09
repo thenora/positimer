@@ -66,14 +66,14 @@ function App() {
         setCountdown(prevCountdown => prevCountdown - 1);
         //   const newCountdown = prevCountdown - 1;
         //   if (newCountdown >= 0) {
-        //     return prevCountdown - 1;
+        //     return newCountdown;
         //   }
 
         //   // if work, switch to break
         //   if (currentTimerType === "Work") {
         //     setCurrentTimerType("Break");
         //     // set countdown to breakTime
-        //     setCountdown(breakTime);
+        //     return breakTime;
         //   }
 
         //   // if break, switch to work
@@ -109,7 +109,6 @@ function App() {
 
   const lowerBreakTimeByOneMinute = () => {
     const newBreakTime = breakTime - 60;
-
     if (newBreakTime < 0) {
       setBreakTime(0);
     } else {
