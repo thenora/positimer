@@ -144,14 +144,15 @@ function App() {
         startStopButtonLabel={isStarted ? "Stop" : "Start"}
         countdown={countdown}
       />
+      <p>
+        <button id="reset" onClick={handleResetButtonClick}>Reset</button>
+      </p>
       <Break
         breakTime={breakTime}
         lowerBreakTimeByOneMinute={lowerBreakTimeByOneMinute}
         raiseBreakTimeByOneMinute={raiseBreakTimeByOneMinute}
       />
-      <p>
-        <button id="reset" onClick={handleResetButtonClick}>Reset</button>
-      </p>
+
       <audio id="alarm" ref={audioElement}>
         <source src="https://www.soundjay.com/misc/sounds/magic-chime-01.mp3" />
       </audio>
