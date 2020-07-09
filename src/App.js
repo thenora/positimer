@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Work from './components/Work'
 import Break from './components/Break'
 import Countdown from './components/Countdown'
 import './App.css';
 
 function App() {
+  const audioElement = useRef(null)
   const [currentTimerType, setCurrentTimerType] = useState("Work");
   const [intervalId, setIntervalId] = useState(null);
   const [workTime, setWorkTime] = useState(60 * 25); // time in seconds
@@ -35,6 +36,7 @@ function App() {
   // if countdown is zero, change work to break or break to work
   useEffect(() => {
     if (countdown === 0) {
+      audioElement.current.play()
       if (currentTimerType === "Work") {
         setCurrentTimerType("Break");
         setCountdown(breakTime);
@@ -86,6 +88,8 @@ function App() {
   };
 
   const handleResetButtonClick = () => {
+    // reset audio
+    audioElement.current.load()
     // clear the countdown interval
     clearInterval(intervalId)
     // set the intervalId null
@@ -137,8 +141,11 @@ function App() {
         raiseBreakTimeByOneMinute={raiseBreakTimeByOneMinute}
       />
       <p>
-      <button id="reset" onClick={handleResetButtonClick}>Reset</button>
+        <button id="reset" onClick={handleResetButtonClick}>Reset</button>
       </p>
+      <audio id="alarm" ref={audioElement}>
+        <source src="https://www.soundjay.com/misc/sounds/magic-chime-01.mp3" />
+      </audio>
    </div>
   );
 }
