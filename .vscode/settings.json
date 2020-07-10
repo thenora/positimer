@@ -1,3 +1,9 @@
 {
-  "git.ignoreLimitWarning": true
+  "git.ignoreLimitWarning": true,
+  "cSpell.words": [
+    "chrome",
+    "extension",
+    "positimer",
+    "positimer chrome extension"
+  ]
 }
