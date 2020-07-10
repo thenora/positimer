@@ -1,18 +1,22 @@
 {
   "short_name": "Positimer",
   "name": "Positimer Chrome Extension",
+  "author": "Nora Robertson",
   "icons": {
     "16": "picon16.ico",
     "48": "picon48.png",
     "64": "picon.png",
     "128": "picon128.png"
   },
-  "content_security_policy": "script-src 'self' 'sha256-WDhufSqZOEoWULzS4Nwz11MNyHzZClVYbQ2JSt1vfkw'; object-src 'self'",
-  "permissions": [],
+  // "content_security_policy": "script-src 'self' 'sha256-WDhufSqZOEoWULzS4Nwz11MNyHzZClVYbQ2JSt1vfkw'; object-src 'self'",
   "manifest_version": 2,
   "version": "0.0.1",
-  "browser_action": {
-    "default_popup": "index.html",
-    "default_title": "Positimer Widget"
-  }
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "permissions": ["storage"]
+  // "browser_action": {
+  //   "default_popup": "index.html",
+  //   "default_title": "Positimer Widget"
+  // }
 }
