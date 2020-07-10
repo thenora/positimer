@@ -1,25 +1,21 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
-    {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "short_name": "Positimer",
+  "name": "Positimer",
+  "author": "TheNora",
+  "description": "A positive pomodoro-style timer.",
+  "content_security_policy": "script-src 'self' 'sha256-QAF3m0DIEpS3Fk2LYxGY9CPf4bO/odm/fKz4y4ndSxw='; object-src 'self'",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "icons": {
+    "16": "picon.ico",
+    "48": "picon.png",
+    "128": "picon.png"
+  },
+  // "start_url": ".",
+  // "display": "standalone",
+  "browser_action": {
+    "default_icon": "picon.png",
+    "default_popup": "index.html",
+    "default_title": "Positimer"
+  }
 }
