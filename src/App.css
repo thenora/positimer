@@ -2,6 +2,11 @@ html,
 body {
   min-width: 500px;
 }
+
 .page {
   padding: 20px;
+}
+
+.App {
+  text-align: center;
 }
