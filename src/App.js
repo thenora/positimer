@@ -1,3 +1,5 @@
+/* global chrome */
+
 import React, { useState, useEffect, useRef } from "react";
 import Work from './components/Work'
 import Break from './components/Break'
@@ -11,6 +13,67 @@ function App() {
   const [workTime, setWorkTime] = useState(60 * 25); // time in seconds
   const [breakTime, setBreakTime] = useState(300);
   const [countdown, setCountdown] = useState(workTime);
+
+  chrome.storage.local.get(['intervalId', 'timer'], function (data) {
+    if (data.intervalId) {
+      console.log(data.intervalId);
+      setCountdown(data.timer);
+    };
+  });
+
+  // componentDidMount() {
+  //   // On app load, check if there's existing data for a running timer. If not, set it.
+  //   chrome.storage.local.get('intervalId', (data) => {
+  //     console.log(data.intervalId);
+  //     //use "in" check as a regular if(data.intervalId) will
+  //     //return false for empty arrays
+  //     if ('intervalId' in data) { setCountdown(data.countdown) };
+  //     // else chrome.storage.sync.set({ allData: [] });
+  //   });
+  // }
+
+
+  // TODO why is mount and unmount not working ?
+  // componentWillUnmount() {
+  //   // on app un-mounting
+  //   chrome.storage.local.set({
+  //     'timer': countdown,
+  //     'intervalId': intervalId
+  //   });
+  //   // On app load, check if there's existing data for a running timer. If not, set it.
+  //   chrome.storage.local.get('intervalId', (data) => {
+  //     console.log(data.intervalId);
+  //     //use "in" check as a regular if(data.intervalId) will
+  //     //return false for empty arrays
+  //     if ('intervalId' in data) {
+  //       setCountdown(data.countdown);
+  //       // this.setState({ allData });
+  //     } // else chrome.storage.sync.set({ allData: [] });
+  //   });
+  // }
+
+  // clear and create alarm
+
+  // chrome.storage.local.get( ['start','timer'], function (data) {
+  //   console.log(data.start);
+  //   console.log(data.timer);
+  // })
+
+  // const savedTime = chrome.storage.local.get(['countdown'], function (item) {
+  //   setCountdown(item.countdown);
+  // })
+
+
+  // if (savedTime) {
+  //   setCountdown(savedTime);
+  // }
+  // // Call this when the pop-up is shown
+  // chrome.runtime.sendMessage({ cmd: 'GET_TIME' }, response => {
+  //   if (response.time) {
+  //     const time = new Date(response.time);
+  //     startTimer(time)
+  //   }
+  // });
 
   // Change countdown when workTime changes
   useEffect(() => {
@@ -39,6 +102,8 @@ function App() {
   const isStarted = intervalId != null;
 
   // if countdown is zero, change work to break or break to work
+  // TODO add popup alert
+  // TODO add button click between sessions
   useEffect(() => {
     if (countdown === 0) {
       audioElement.current.play()
@@ -62,33 +127,30 @@ function App() {
       setIntervalId(null);
     } else {
       // if timer is stopped:
+
+      // let minutes = (countdown / 6000);
+      //chrome.alarms.create({ delayInMinutes: minutes });
+
       // lower countdown for each second
       // 1000 ms is 1 second
+      const now = Date.now();
+      console.log(now);
+      // save to time to local storage and start countdown
+      chrome.storage.local.set({
+        'start': now,
+        'timer': countdown
+      });
+      console.log("added now to local storage");
+      chrome.storage.local.get(['start', 'timer'], function (data) {
+        console.log(data.start);
+        console.log(data.timer);
+      })
+      // start timer
       const newIntervalId = setInterval(() => {
         setCountdown(prevCountdown => prevCountdown - 1);
-        //   const newCountdown = prevCountdown - 1;
-        //   if (newCountdown >= 0) {
-        //     return newCountdown;
-        //   }
-
-        //   // if work, switch to break
-        //   if (currentTimerType === "Work") {
-        //     setCurrentTimerType("Break");
-        //     // set countdown to breakTime
-        //     return breakTime;
-        //   }
-
-        //   // if break, switch to work
-        //   else if (currentTimerType === "Break") {
-        //     setCurrentTimerType("Work");
-        //     // set countdown to breakTime
-        //     setCountdown(workTime);
-        //   }
-        //   // set countdown to workTime
-        //   return prevCountdown;
-        // });
       }, 100); // TODO reset to 1000
       setIntervalId(newIntervalId);
+      chrome.storage.local.set({ 'intervalId': intervalId });
     }
   };
 

@@ -10,11 +10,18 @@
   },
   // "content_security_policy": "script-src 'self' 'sha256-WDhufSqZOEoWULzS4Nwz11MNyHzZClVYbQ2JSt1vfkw'; object-src 'self'",
   "manifest_version": 2,
-  "version": "0.0.1",
+  "version": "0.1",
   // "chrome_url_overrides": {
   //   "newtab": "index.html"
   // },
-  "permissions": ["storage"],
+  "permissions": ["alarms", "declarativeContent", "storage"],
+  "background": {
+    "scripts": ["helpers.js", "background.js"],
+    "persistent": false
+  },
+  // "chrome_url_overrides": {
+  //   "newtab": "index.html"
+  // },
   "browser_action": {
     "default_popup": "index.html",
     "default_title": "Positimer Widget"

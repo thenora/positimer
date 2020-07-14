@@ -1,6 +1,8 @@
 html,
 body {
-  min-width: 500px;
+  min-width: 450px;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #d3f0f9;
 }
 
 .page {
@@ -9,4 +11,9 @@ body {
 
 .App {
   text-align: center;
+  padding: 20px;
+}
+
+.hidden{
+  display:none;
 }
