@@ -11,11 +11,18 @@ function App() {
   const [workTime, setWorkTime] = useState(60 * 25); // time in seconds
   const [breakTime, setBreakTime] = useState(300);
   const [countdown, setCountdown] = useState(workTime);
+  const isStarted = intervalId != null;
+  const [workCounter, setWorkCounter] = useState(0);
+  const [breakCounter, setBreakCounter] = useState(0);
 
-  // Change countdown when workTime changes
+  // Change countdown when workTime or breakTime changes
   useEffect(() => {
-    setCountdown(workTime);
-  }, [workTime]);
+    if (currentTimerType === "Work") {
+      setCountdown(workTime);
+    } else if (currentTimerType === "Break") {
+      setCountdown(breakTime);
+    }
+  }, [workTime, breakTime]);
 
   const lowerWorkTimeByOneMinute = () => {
     const newWorkTime = workTime - 60;
@@ -36,21 +43,28 @@ function App() {
     }
   };
 
-  const isStarted = intervalId != null;
+
+  // TODO where should I increase my work counter?
 
   // if countdown is zero, change work to break or break to work
   useEffect(() => {
     if (countdown === 0) {
       audioElement.current.play()
       if (currentTimerType === "Work") {
+        setWorkCounter(workCounter + 1);
         setCurrentTimerType("Break");
         setCountdown(breakTime);
+        clearInterval(intervalId);
+        setIntervalId(null);
       } else if (currentTimerType === "Break") {
+        setBreakCounter(breakCounter + 1);
         setCurrentTimerType("Work");
         setCountdown(workTime);
+        clearInterval(intervalId);
+        setIntervalId(null);
       }
     }
-  }, [breakTime, currentTimerType, workTime, countdown]);
+  }, [breakTime, currentTimerType, workTime, countdown, intervalId, workCounter, breakCounter]);
 
   const handleStartStopClick = () => {
     if (isStarted) {
@@ -66,27 +80,6 @@ function App() {
       // 1000 ms is 1 second
       const newIntervalId = setInterval(() => {
         setCountdown(prevCountdown => prevCountdown - 1);
-        //   const newCountdown = prevCountdown - 1;
-        //   if (newCountdown >= 0) {
-        //     return newCountdown;
-        //   }
-
-        //   // if work, switch to break
-        //   if (currentTimerType === "Work") {
-        //     setCurrentTimerType("Break");
-        //     // set countdown to breakTime
-        //     return breakTime;
-        //   }
-
-        //   // if break, switch to work
-        //   else if (currentTimerType === "Break") {
-        //     setCurrentTimerType("Work");
-        //     // set countdown to breakTime
-        //     setCountdown(workTime);
-        //   }
-        //   // set countdown to workTime
-        //   return prevCountdown;
-        // });
       }, 100); // TODO reset to 1000
       setIntervalId(newIntervalId);
     }
@@ -94,19 +87,17 @@ function App() {
 
   const handleResetButtonClick = () => {
     // reset audio
-    audioElement.current.load()
+    audioElement.current.load();
     // clear the countdown interval
-    clearInterval(intervalId)
-    // set the intervalId null
-    setIntervalId(null)
-    // set the timertype to "Work"
-    setCurrentTimerType('Work')
+    clearInterval(intervalId);
+    setIntervalId(null);
+    setCurrentTimerType("Work");
     // reset the workTime to 25 minutes
-    setWorkTime(25 * 60)
+    setWorkTime(25 * 60);
     // reset the breakTime to 5
-    setBreakTime(60 * 5)
+    setBreakTime(60 * 5);
     // reset the timer to 25 minutes (initial workTime)
-    setCountdown(25 * 60)
+    setCountdown(25 * 60);
   }
 
   const lowerBreakTimeByOneMinute = () => {
@@ -123,35 +114,65 @@ function App() {
   const raiseBreakTimeByOneMinute = () => {
     const newBreakTime = breakTime + 60
     if (newBreakTime <= 60 * 60) {
-      setBreakTime(newBreakTime)
+      setBreakTime(newBreakTime);
     }
   };
 
+  const skipBreak = () => {
+    clearInterval(intervalId);
+    setCountdown(workTime);
+    setCurrentTimerType("Work");
+    setIntervalId(null);
+  }
 
   return (
     <div className="App">
+      <div>
+        {!isStarted && currentTimerType === "Work" &&
+          <Work
+            workTime={workTime}
+            lowerWorkTimeByOneMinute={lowerWorkTimeByOneMinute}
+            raiseWorkTimeByOneMinute={raiseWorkTimeByOneMinute}
+          />
+        }
+        {!isStarted && currentTimerType === "Break" &&
+          <Break
+            breakTime={breakTime}
+            lowerBreakTimeByOneMinute={lowerBreakTimeByOneMinute}
+            raiseBreakTimeByOneMinute={raiseBreakTimeByOneMinute}
+          />
+        }
+      </div>
+      <div>
+        <Countdown
+          workTime={workTime}
+          breakTime={breakTime}
+          timerLabel={currentTimerType}
+          handleStartStopClick={handleStartStopClick}
+          startStopButtonLabel={isStarted ? "Stop" : "Start"}
+          countdown={countdown}
+        />
+        {/* TODO change skip button to link */}
+        {!isStarted && currentTimerType === "Break" &&
+          <p>
+            <button id="skip-break" onClick={skipBreak}>
+              Skip Break
+            </button>
+          </p>
+        }
+        <p>
+          <button id="reset" onClick={handleResetButtonClick}>Reset</button>
+        </p>
 
-      <Work
-        workTime={workTime}
-        lowerWorkTimeByOneMinute={lowerWorkTimeByOneMinute}
-        raiseWorkTimeByOneMinute={raiseWorkTimeByOneMinute}
-      />
-      <Countdown
-        workTime={workTime}
-        breakTime={breakTime}
-        timerLabel={currentTimerType}
-        handleStartStopClick={handleStartStopClick}
-        startStopButtonLabel={isStarted ? "Stop" : "Start"}
-        countdown={countdown}
-      />
-      <p>
-        <button id="reset" onClick={handleResetButtonClick}>Reset</button>
-      </p>
-      <Break
-        breakTime={breakTime}
-        lowerBreakTimeByOneMinute={lowerBreakTimeByOneMinute}
-        raiseBreakTimeByOneMinute={raiseBreakTimeByOneMinute}
-      />
+      </div>
+      <div>
+        {workCounter > 0 && !isStarted &&
+          <p>Yay! You've completed {workCounter} work timer{workCounter > 1 ? "s." : "."}</p>
+        }
+        {breakCounter > 0 && !isStarted &&
+          <p>And you're not "all-work-and-no-play" with {breakCounter} completed break{breakCounter > 1 ? "s." : "."}</p>
+        }
+      </div>
 
       <audio id="alarm" ref={audioElement}>
         <source src="https://www.soundjay.com/misc/sounds/magic-chime-01.mp3" />
