@@ -10,7 +10,7 @@ const Work = ({
 
   return (
     <div>
-      <p id="work-label">Work</p>
+      <p id="work-label">How long should your work timer be?</p>
       <p id="work-time">{workTimeInMinutes}</p>
       <button id="work-lower" onClick={lowerWorkTimeByOneMinute}>
         -
