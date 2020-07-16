@@ -13,9 +13,14 @@ const Countdown = ({
   const formattedCountdown = moment
     .duration(countdown, "s")
     .format("mm:ss", { trim: false });
+
   return (
     <div>
-      <p id="timer-label">{timerLabel}</p>
+      <p id="timer-label">
+        {timerLabel === "Work"
+          ? "Let's get to work!"
+          : "You earned this break!"}
+      </p>
       <p>{formattedCountdown}</p>
 
       <button onClick={handleStartStopClick}>{startStopButtonLabel}</button>
