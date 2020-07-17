@@ -1,0 +1,5 @@
+{
+  "api": { 
+    "invokeUrl": "https://o3marnxewa.execute-api.us-west-2.amazonaws.com/prod"
+  } 
+}
