@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
-import Work from './components/Work'
-import Break from './components/Break'
-import Countdown from './components/Countdown'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Work from './components/Work';
+import Break from './components/Break';
+import Countdown from './components/Countdown';
+import Quotes from './components/Quotes';
 import './App.css';
 
 function App() {
@@ -173,7 +175,13 @@ function App() {
           <p>And you're not "all-work-and-no-play" with {breakCounter} completed break{breakCounter > 1 ? "s." : "."}</p>
         }
       </div>
-
+      <Router>
+        <Switch>
+          {/* <Route exact path="/" component={Home} /> */}
+          <Route exact path="/quotes" component={Quotes} />
+          {/* <Route exact path="/admin" component={ProductAdmin} /> */}
+        </Switch>
+      </Router>
       <audio id="alarm" ref={audioElement}>
         <source src="https://www.soundjay.com/misc/sounds/magic-chime-01.mp3" />
       </audio>
