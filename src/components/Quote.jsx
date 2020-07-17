@@ -42,12 +42,12 @@ export default class QuoteAdmin extends Component {
               <input 
                 className="input is-medium"
                 type="text" 
-                placeholder="Enter name"
+                placeholder="Enter quote"
                 value={this.state.updatedphrase}
                 onChange={this.onAddPhraseChange}
               />
               <p className="quote-id">id: { this.props.id }</p>
-              <button type="submit" 
+              <button type="submit"
                 className="button is-info is-small"
                 onClick={ this.handleEditSave }
               >save</button>

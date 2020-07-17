@@ -13,18 +13,23 @@ export default class QuoteAdmin extends Component {
     quotes: []
   }
 
-  handleAddQuote = (id, event) => {
+  handleAddQuote = async (id, event) => {
     event.preventDefault();
     // add call to AWS API Gateway add quote endpoint here
 
     try {
-      const res = await axios.get(`${config.api.invokeUrl}/quotes`);
-      this.setState({ quotes: res.data });
+
+      const params = {
+        "id": id,
+        "phrase": this.state.newquote.phrase
+      };
+      await axios.get(`${config.api.invokeUrl}/quotes/{id}`, params);
+      this.setState({ newquote: { "phrase": "", "id": "" } });
     } catch (err) {
       console.log("Oops! There was an error: ${err}");
     }
 
-    this.setState({ quotes: [...this.state.quotes, this.state.newquote] })
+    this.setState({ quotes: [...this.state.quotes, this.state.newquote] });
     this.setState({ newquote: { "phrase": "", "id": "" } });
   }
 
@@ -80,8 +85,8 @@ export default class QuoteAdmin extends Component {
                       <input
                         className="input is-medium"
                         type="text"
-                        placeholder="Enter name"
-                        value={this.state.newquote.quotename}
+                        placeholder="Enter quote"
+                        value={this.state.newquote.phrase}
                         onChange={this.onAddPhraseChange}
                       />
                     </div>
