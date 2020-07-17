@@ -4,6 +4,7 @@ import Work from './components/Work';
 import Break from './components/Break';
 import Countdown from './components/Countdown';
 import Quotes from './components/Quotes';
+import QuoteAdmin from './components/QuoteAdmin';
 import './App.css';
 
 function App() {
@@ -179,7 +180,7 @@ function App() {
         <Switch>
           {/* <Route exact path="/" component={Home} /> */}
           <Route exact path="/quotes" component={Quotes} />
-          {/* <Route exact path="/admin" component={ProductAdmin} /> */}
+          <Route exact path="/admin" component={QuoteAdmin} />
         </Switch>
       </Router>
       <audio id="alarm" ref={audioElement}>
