@@ -33,11 +33,11 @@ export default class QuoteAdmin extends Component {
     this.setState({ newquote: { "phrase": "", "id": "" } });
   }
 
-  handleUpdateQuote = (id, name) => {
+  handleUpdateQuote = (id, quote) => {
     // add call to AWS API Gateway update quote endpoint here
     const quoteToUpdate = [...this.state.quotes].find(quote => quote.id === id);
     const updatedQuotes = [...this.state.quotes].filter(quote => quote.id !== id);
-    quoteToUpdate.phrase = name;
+    quoteToUpdate.phrase = quote;
     updatedQuotes.push(quoteToUpdate);
     this.setState({ quotes: updatedQuotes });
   }
@@ -116,7 +116,7 @@ export default class QuoteAdmin extends Component {
                           isAdmin={true}
                           handleUpdateQuote={this.handleUpdateQuote}
                           handleDeleteQuote={this.handleDeleteQuote}
-                          name={quote.phrase}
+                          quote={quote.phrase}
                           id={quote.id}
                           key={quote.id}
                         />)

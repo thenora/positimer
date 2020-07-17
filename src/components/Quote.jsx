@@ -5,7 +5,7 @@ export default class QuoteAdmin extends Component {
 
   state = {
     isEditMode: false,
-    updatedphrase: this.props.name
+    updatedphrase: this.props.quote
   }
 
   handleQuoteEdit = event => {
@@ -53,7 +53,7 @@ export default class QuoteAdmin extends Component {
               >save</button>
             </div>
           : <div>
-              <p className="quote-title">{ this.props.name }</p>
+              <p className="quote-title">{ this.props.quote }</p>
               <p className="quote-id">id: { this.props.id }</p>
             </div>
         }
