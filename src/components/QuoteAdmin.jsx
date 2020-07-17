@@ -16,6 +16,14 @@ export default class QuoteAdmin extends Component {
   handleAddQuote = (id, event) => {
     event.preventDefault();
     // add call to AWS API Gateway add quote endpoint here
+
+    try {
+      const res = await axios.get(`${config.api.invokeUrl}/quotes`);
+      this.setState({ quotes: res.data });
+    } catch (err) {
+      console.log("Oops! There was an error: ${err}");
+    }
+
     this.setState({ quotes: [...this.state.quotes, this.state.newquote] })
     this.setState({ newquote: { "phrase": "", "id": "" } });
   }
@@ -36,10 +44,18 @@ export default class QuoteAdmin extends Component {
     this.setState({ quotes: updatedQuotes });
   }
 
-  fetchQuotes = () => {
+  // TODO DRY up code and create a wrapper
+  fetchQuotes = async () => {
     // add call to AWS API Gateway to fetch quotes here
     // then set them in state
-  }
+
+    try {
+      const res = await axios.get(`${config.api.invokeUrl}/quotes`);
+      this.setState({ quotes: res.data });
+    } catch (err) {
+      console.log("Oops! There was an error: ${err}");
+    }
+  };
 
   onAddPhraseChange = event => this.setState({ newquote: { ...this.state.newquote, "phrase": event.target.value } });
   onAddQuoteIdChange = event => this.setState({ newquote: { ...this.state.newquote, "id": event.target.value } });
