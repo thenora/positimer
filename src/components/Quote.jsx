@@ -27,10 +27,12 @@ export default class QuoteAdmin extends Component {
         {
           this.props.isAdmin && 
           <Fragment>
-            <a href="/" onClick={this.handleQuoteEdit} className="quote-edit-icon">
+            <button onClick={this.handleQuoteEdit} className="quote-edit-icon">
+            {/* <a href="/" onClick={this.handleQuoteEdit} className="quote-edit-icon"> */}
               {/* <FontAwesomeIcon icon="edit" /> */}Edit
-            </a>
-            <button onClick={event => this.props.handleDeleteQuote(this.props.id, event)} className="delete"></button>
+            </button>
+            {/* TODO Do I want delete accessible? */}
+            {/* <button onClick={event => this.props.handleDeleteQuote(this.props.id, event)} className="delete">Delete</button> */}
           </Fragment>
         }
         {
