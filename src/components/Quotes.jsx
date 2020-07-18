@@ -41,14 +41,14 @@ export default class Quotes extends Component {
                     {this.state.quotes && this.state.quotes.length > 0 ? (
                       this.state.quotes.map((quote) => (
                         <Quote
-                          name={quote.phrase}
+                          quote={quote.phrase}
                           id={quote.id}
                           key={quote.id}
                         />
                       ))
                     ) : (
                       <div className="tile notification is-warning">
-                        No quotes available
+                        No quotes available...
                       </div>
                     )}
                   </div>

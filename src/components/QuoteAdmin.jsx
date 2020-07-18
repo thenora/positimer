@@ -140,7 +140,7 @@ export default class QuoteAdmin extends Component {
               </div>
               <div className="column is-two-thirds">
                 <div className="tile is-ancestor">
-                  <div className="tile is-4 is-parent  is-vertical">
+                  <div className="tile is-4 is-parent is-vertical">
                     {this.state.quotes.map((quote, index) => (
                       <Quote
                         isAdmin={true}
