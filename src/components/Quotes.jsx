@@ -18,7 +18,7 @@ export default class Quotes extends Component {
       const res = await axios.get(`${config.api.invokeUrl}/quotes`);
       this.setState({ quotes: res.data });
     } catch (err) {
-      console.log("Oops! There was an error: ${err}");
+      console.log(`Oops! There was an error: ${err}`);
     }
   };
 
