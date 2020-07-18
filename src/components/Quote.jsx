@@ -32,7 +32,7 @@ export default class QuoteAdmin extends Component {
               {/* <FontAwesomeIcon icon="edit" /> */}Edit
             </button>
             {/* TODO Do I want delete accessible? */}
-            {/* <button onClick={event => this.props.handleDeleteQuote(this.props.id, event)} className="delete">Delete</button> */}
+            <button onClick={event => this.props.handleDeleteQuote(this.props.id, event)} className="delete">Delete</button>
           </Fragment>
         }
         {
