@@ -5,6 +5,9 @@ import Break from './components/Break';
 import Countdown from './components/Countdown';
 import Quotes from './components/Quotes';
 import QuoteAdmin from './components/QuoteAdmin';
+import Notfound from './components/Notfound';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import './App.css';
 
 function App() {
@@ -181,6 +184,7 @@ function App() {
           {/* <Route exact path="/" component={Home} /> */}
           <Route exact path="/quotes" component={Quotes} />
           <Route exact path="/admin" component={QuoteAdmin} />
+          <Route component={Notfound} />
         </Switch>
       </Router>
       <audio id="alarm" ref={audioElement}>
