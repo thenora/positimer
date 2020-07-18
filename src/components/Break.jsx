@@ -14,10 +14,10 @@ const Break = ({
       <div>
         <p id="break-label">How long should your break be?</p>
         <p id="break-time">{breakTimeInMinutes}</p>
-        <button id="break-lower" onClick={lowerBreakTimeByOneMinute}>
+        <button id="break-lower" className="button is-secondary is-small" onClick={lowerBreakTimeByOneMinute}>
           -
         </button>
-        <button id="break-raise" onClick={raiseBreakTimeByOneMinute}>
+        <button id="break-raise" className="button is-secondary is-small" onClick={raiseBreakTimeByOneMinute}>
           +
         </button>
       </div>

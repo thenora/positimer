@@ -12,10 +12,10 @@ const Work = ({
     <div>
       <p id="work-label">How long should your work timer be?</p>
       <p id="work-time">{workTimeInMinutes}</p>
-      <button id="work-lower" onClick={lowerWorkTimeByOneMinute}>
+      <button id="work-lower" className="button is-secondary is-small" onClick={lowerWorkTimeByOneMinute}>
         -
       </button>
-      <button id="work-raise" onClick={raiseWorkTimeByOneMinute}>
+      <button id="work-raise" className="button is-secondary is-small" onClick={raiseWorkTimeByOneMinute}>
         +
       </button>
     </div>

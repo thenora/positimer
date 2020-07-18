@@ -1,5 +1,5 @@
 import React, { Component, Fragment }  from 'react';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default class QuoteAdmin extends Component {
 
@@ -27,10 +27,12 @@ export default class QuoteAdmin extends Component {
         {
           this.props.isAdmin && 
           <Fragment>
-            <button onClick={this.handleQuoteEdit} className="quote-edit-icon">
-            {/* <a href="/" onClick={this.handleQuoteEdit} className="quote-edit-icon"> */}
-              {/* <FontAwesomeIcon icon="edit" /> */}Edit
-            </button>
+            {/* <button onClick={this.handleQuoteEdit} className="quote-edit-icon"> */}
+            <a href="/" onClick={this.handleQuoteEdit} className="quote-edit-icon">
+              <FontAwesomeIcon icon="edit" />
+              {/* Edit */}
+            {/* </button> */}
+            </a>
             {/* TODO Do I want delete accessible? */}
             <button onClick={event => this.props.handleDeleteQuote(this.props.id, event)} className="delete">Delete</button>
           </Fragment>
@@ -54,7 +56,7 @@ export default class QuoteAdmin extends Component {
             </div>
           : <div>
               <p className="quote-title">{ this.props.quote }</p>
-              <p className="quote-id">id: { this.props.id }</p>
+              {/* <p className="quote-id">id: { this.props.id }</p> */}
             </div>
         }
       </div>

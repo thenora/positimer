@@ -132,59 +132,61 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <div>
-        {!isStarted && currentTimerType === "Work" &&
-          <Work
+    <div className="App page">
+      <div className="columns">
+        <div className="column">
+          {!isStarted && currentTimerType === "Work" &&
+            <Work
+              workTime={workTime}
+              lowerWorkTimeByOneMinute={lowerWorkTimeByOneMinute}
+              raiseWorkTimeByOneMinute={raiseWorkTimeByOneMinute}
+            />
+          }
+          {!isStarted && currentTimerType === "Break" &&
+            <Break
+              breakTime={breakTime}
+              lowerBreakTimeByOneMinute={lowerBreakTimeByOneMinute}
+              raiseBreakTimeByOneMinute={raiseBreakTimeByOneMinute}
+            />
+          }
+        </div>
+        <div className="column">
+          <Countdown
             workTime={workTime}
-            lowerWorkTimeByOneMinute={lowerWorkTimeByOneMinute}
-            raiseWorkTimeByOneMinute={raiseWorkTimeByOneMinute}
-          />
-        }
-        {!isStarted && currentTimerType === "Break" &&
-          <Break
             breakTime={breakTime}
-            lowerBreakTimeByOneMinute={lowerBreakTimeByOneMinute}
-            raiseBreakTimeByOneMinute={raiseBreakTimeByOneMinute}
+            timerLabel={currentTimerType}
+            handleStartStopClick={handleStartStopClick}
+            startStopButtonLabel={isStarted ? "Stop" : "Start"}
+            countdown={countdown}
           />
-        }
-      </div>
-      <div>
-        <Countdown
-          workTime={workTime}
-          breakTime={breakTime}
-          timerLabel={currentTimerType}
-          handleStartStopClick={handleStartStopClick}
-          startStopButtonLabel={isStarted ? "Stop" : "Start"}
-          countdown={countdown}
-        />
-        {/* TODO change skip button to link */}
-        {!isStarted && currentTimerType === "Break" &&
+          {/* TODO change skip button to link */}
+          {!isStarted && currentTimerType === "Break" &&
+            <p>
+              <button className="button is-secondary is-medium" id="skip-break" onClick={skipBreak}>
+                Skip Break
+              </button>
+            </p>
+          }
           <p>
-            <button id="skip-break" onClick={skipBreak}>
-              Skip Break
-            </button>
+            <button id="reset" className="button is-secondary is-medium" onClick={handleResetButtonClick}>Reset</button>
           </p>
-        }
-        <p>
-          <button id="reset" onClick={handleResetButtonClick}>Reset</button>
-        </p>
 
-      </div>
-      <div>
-        {workCounter > 0 && !isStarted &&
-          <p>Yay! You've completed {workCounter} work timer{workCounter > 1 ? "s." : "."}</p>
-        }
-        {breakCounter > 0 && !isStarted &&
-          <p>And you're not "all-work-and-no-play" with {breakCounter} completed break{breakCounter > 1 ? "s." : "."}</p>
-        }
+        </div>
+        <div className="column">
+          {workCounter > 0 && !isStarted &&
+            <p>Yay! You've completed {workCounter} work timer{workCounter > 1 ? "s." : "."}</p>
+          }
+          {breakCounter > 0 && !isStarted &&
+            <p>And you're not "all-work-and-no-play" with {breakCounter} completed break{breakCounter > 1 ? "s." : "."}</p>
+          }
+        </div>
       </div>
       <Router>
         <Switch>
           {/* <Route exact path="/" component={Home} /> */}
           <Route exact path="/quotes" component={Quotes} />
           <Route exact path="/admin" component={QuoteAdmin} />
-          <Route component={Notfound} />
+          {/* <Route component={Notfound} /> */}
         </Switch>
       </Router>
       <audio id="alarm" ref={audioElement}>
