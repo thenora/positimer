@@ -21,9 +21,9 @@ const Countdown = ({
           ? "Let's get to work!"
           : "You earned this break!"}
       </p>
-      <p>{formattedCountdown}</p>
+      <p id="clock">{formattedCountdown}</p>
 
-      <button onClick={handleStartStopClick}>{startStopButtonLabel}</button>
+      <button className="button is-primary is-large" onClick={handleStartStopClick}>{startStopButtonLabel}</button>
     </div>
   );
 };
