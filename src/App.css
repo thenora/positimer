@@ -109,6 +109,10 @@ h1 {
 
 /* Main */
 
+.main {
+  margin-top: 50px;
+}
+
 .features {
   padding-bottom: 3em;
 }
@@ -116,6 +120,30 @@ h1 {
 #clock {
   font-family: 'Orbitron', sans-serif;
   font-size: xxx-large;
+}
 
+.timer-card {
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.Aligner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Aligner-item {
+  max-width: 50%;
+}
+
+.Aligner-item--top {
+  align-self: flex-start;
+}
+
+.Aligner-item--bottom {
+  align-self: flex-end;
 }
 
