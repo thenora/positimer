@@ -33,7 +33,7 @@ h1 {
 }
 
 .button, .control {
-  margin: 20px;
+  margin: .4em;
 }
 
 .App {
@@ -110,7 +110,7 @@ h1 {
 /* Main */
 
 .main {
-  margin-top: 50px;
+  margin-top: 2em;
 }
 
 .features {
@@ -122,12 +122,9 @@ h1 {
   font-size: xxx-large;
 }
 
-.timer-card {
-  align-items: center;
-  justify-content: center;
+.timer-set {
+  padding: 15px;
 }
-
-
 
 .Aligner {
   display: flex;

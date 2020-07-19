@@ -135,7 +135,7 @@ function App() {
   return (
     <div className="App page">
       <div className="columns">
-        <div className="column">
+        <div className="column main timer-set">
           {!isStarted && currentTimerType === "Work" &&
             <Work
               workTime={workTime}
@@ -151,7 +151,7 @@ function App() {
             />
           }
         </div>
-        <div className="column">
+        <div className="column main card">
           <Countdown
             workTime={workTime}
             breakTime={breakTime}
