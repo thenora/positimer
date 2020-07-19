@@ -7,7 +7,8 @@ import Quotes from './components/Quotes';
 import QuoteAdmin from './components/QuoteAdmin';
 import Notfound from './components/Notfound';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faEdit } from '@fortawesome/free-solid-svg-icons'
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import * as workerInterval from 'worker-interval';
 import './App.css';
 
 function App() {
@@ -60,13 +61,13 @@ function App() {
         setWorkCounter(workCounter + 1);
         setCurrentTimerType("Break");
         setCountdown(breakTime);
-        clearInterval(intervalId);
+        workerInterval.clearInterval(intervalId);
         setIntervalId(null);
       } else if (currentTimerType === "Break") {
         setBreakCounter(breakCounter + 1);
         setCurrentTimerType("Work");
         setCountdown(workTime);
-        clearInterval(intervalId);
+        workerInterval.clearInterval(intervalId);
         setIntervalId(null);
       }
     }
@@ -76,7 +77,7 @@ function App() {
     if (isStarted) {
       // if timer is started
       // we want to stop and clear
-      clearInterval(intervalId);
+      workerInterval.clearInterval(intervalId);
       setCountdown(workTime);
       setCurrentTimerType("Work");
       setIntervalId(null);
@@ -84,7 +85,7 @@ function App() {
       // if timer is stopped:
       // lower countdown for each second
       // 1000 ms is 1 second
-      const newIntervalId = setInterval(() => {
+      const newIntervalId = workerInterval.setInterval(() => {
         setCountdown(prevCountdown => prevCountdown - 1);
       }, 100); // TODO reset to 1000
       setIntervalId(newIntervalId);
@@ -95,7 +96,7 @@ function App() {
     // reset audio
     audioElement.current.load();
     // clear the countdown interval
-    clearInterval(intervalId);
+    workerInterval.clearInterval(intervalId);
     setIntervalId(null);
     setCurrentTimerType("Work");
     // reset the workTime to 25 minutes
@@ -125,7 +126,7 @@ function App() {
   };
 
   const skipBreak = () => {
-    clearInterval(intervalId);
+    workerInterval.clearInterval(intervalId);
     setCountdown(workTime);
     setCurrentTimerType("Work");
     setIntervalId(null);
