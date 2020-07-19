@@ -27,12 +27,13 @@ export default class QuoteAdmin extends Component {
         {
           this.props.isAdmin && 
           <Fragment>
-            {/* <button onClick={this.handleQuoteEdit} className="quote-edit-icon"> */}
-            <a href="/" onClick={this.handleQuoteEdit} className="quote-edit-icon">
-              <FontAwesomeIcon icon="edit" />
-              {/* Edit */}
-            {/* </button> */}
-            </a>
+            {/* TODO Why isn't icon working? */}
+            <button onClick={this.handleQuoteEdit} className="quote-edit-icon icon small">
+            {/* <a href="/" onClick={this.handleQuoteEdit} className="quote-edit-icon"> */}
+              {/* <FontAwesomeIcon icon="edit" /> */}
+              Edit
+            </button>
+            {/* </a> */}
             {/* TODO Do I want delete accessible? */}
             <button onClick={event => this.props.handleDeleteQuote(this.props.id, event)} className="delete">Delete</button>
           </Fragment>
