@@ -16,12 +16,12 @@ const Countdown = ({
 
   return (
     <div>
-      <p id="timer-label">
+      <p className="timer-label">
         {timerLabel === "Work"
           ? "Let's get to work!"
           : "You earned this break!"}
       </p>
-      <p id="clock">{formattedCountdown}</p>
+      <p className="clock">{formattedCountdown}</p>
 
       <button className="button is-primary is-large" onClick={handleStartStopClick}>{startStopButtonLabel}</button>
     </div>

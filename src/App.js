@@ -135,6 +135,8 @@ function App() {
   return (
     <div className="App page">
       <div className="columns">
+
+
         <div className="column timer-set">
           {!isStarted && currentTimerType === "Work" &&
             <Work
@@ -163,17 +165,25 @@ function App() {
           {/* TODO change skip button to link */}
           {!isStarted && currentTimerType === "Break" &&
             <p>
-              <button className="button is-secondary is-medium" id="skip-break" onClick={skipBreak}>
+              <button className="button is-secondary is-medium skip-break" onClick={skipBreak}>
                 Skip Break
               </button>
             </p>
           }
           <p>
-            <button id="reset" className="button is-secondary is-medium" onClick={handleResetButtonClick}>Reset</button>
+            <button className="button is-secondary is-medium reset" onClick={handleResetButtonClick}>Reset</button>
           </p>
 
         </div>
         <div className="column timer-info">
+          <Router>
+            <Switch>
+              {/* <Route exact path="/" component={Home} /> */}
+              <Route exact path="/quotes" component={Quotes} />
+              <Route exact path="/admin" component={QuoteAdmin} />
+              {/* <Route component={Notfound} /> */}
+            </Switch>
+          </Router>
           {workCounter > 0 && !isStarted &&
             <p>Yay! You've completed {workCounter} work timer{workCounter > 1 ? "s." : "."}</p>
           }
@@ -182,14 +192,6 @@ function App() {
           }
         </div>
       </div>
-      <Router>
-        <Switch>
-          {/* <Route exact path="/" component={Home} /> */}
-          <Route exact path="/quotes" component={Quotes} />
-          <Route exact path="/admin" component={QuoteAdmin} />
-          {/* <Route component={Notfound} /> */}
-        </Switch>
-      </Router>
       <audio id="alarm" ref={audioElement}>
         <source src="https://www.soundjay.com/misc/sounds/magic-chime-01.mp3" />
       </audio>

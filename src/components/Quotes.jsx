@@ -31,28 +31,21 @@ export default class Quotes extends Component {
       <Fragment>
         <section className="section">
           <div className="container">
-            <h1>Motivate Quotes</h1>
-            <p className="subtitle is-5">Get motivated:</p>
+            <h1>Words of Inspiration</h1>
+            {/* <p className="subtitle is-5">Get motivated:</p> */}
             <br />
-            <div className="columns">
-              <div className="column">
-                <div className="tile is-ancestor">
-                  <div className="tile is-4 is-parent is-vertical">
-                    {this.state.quotes && this.state.quotes.length > 0 ? (
-                      this.state.quotes.map((quote) => (
-                        <Quote
-                          quote={quote.phrase}
-                          id={quote.id}
-                          key={quote.id}
-                        />
-                      ))
-                    ) : (
-                      <div className="tile notification is-warning">
-                        No quotes available...
-                      </div>
-                    )}
+
+            <div className="tile is-ancestor">
+              <div className="tile is-parent is-vertical">
+                {this.state.quotes && this.state.quotes.length > 0 ? (
+                  this.state.quotes.map((quote) => (
+                    <Quote quote={quote.phrase} id={quote.id} key={quote.id} />
+                  ))
+                ) : (
+                  <div className="tile notification is-warning">
+                    No quotes available...
                   </div>
-                </div>
+                )}
               </div>
             </div>
           </div>

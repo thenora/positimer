@@ -10,18 +10,18 @@ const Break = ({
   const breakTimeInMinutes = moment.duration(breakTime, "s").asMinutes();
 
   return (
-    <div>
-      <div>
-        <p id="break-label">How long should your break be?</p>
-        <p id="break-time">{breakTimeInMinutes}</p>
-        <button id="break-lower" className="button is-secondary is-small" onClick={lowerBreakTimeByOneMinute}>
+    <section className="section">
+      <div className="container">
+        <p className="break-label">How long should your break be?</p>
+        <p className="break-time">{breakTimeInMinutes}</p>
+        <button className="button is-secondary is-small break-lower" onClick={lowerBreakTimeByOneMinute}>
           -
         </button>
-        <button id="break-raise" className="button is-secondary is-small" onClick={raiseBreakTimeByOneMinute}>
+        <button className="button is-secondary is-small break-raise" onClick={raiseBreakTimeByOneMinute}>
           +
         </button>
       </div>
-    </div>
+    </section>
   );
 };
 

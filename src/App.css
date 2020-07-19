@@ -28,7 +28,7 @@ h1 {
   font-size: 2em;
 }
 
-#timer-label {
+.timer-label {
   font-size: 1.25em;
 }
 
@@ -109,7 +109,7 @@ h1 {
 
 /* Main */
 
-.main, .timer-set, .timer-info {
+.main {
   margin-top: 2em;
 }
 
@@ -117,9 +117,14 @@ h1 {
   padding-bottom: 3em;
 }
 
-#clock {
+.clock {
   font-family: 'Orbitron', sans-serif;
   font-size: xxx-large;
+}
+
+.work-time {
+  font-weight: bold;
+  font-size: medium;
 }
 
 .timer-set, .timer-info {
