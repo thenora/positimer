@@ -102,7 +102,7 @@ export default class QuoteAdmin extends Component {
             </p>
             <br />
             <div className="columns">
-              <div className="column is-one-third">
+              <div className="column">
                 <form
                   onSubmit={(event) =>
                     this.handleAddQuote(this.state.newquote.id, event)
@@ -127,7 +127,7 @@ export default class QuoteAdmin extends Component {
                         onChange={this.onAddQuoteIdChange}
                       />
                     </div>
-                    <div className="control">
+                    <div>
                       <button
                         type="submit"
                         className="button is-primary is-medium"
@@ -137,10 +137,8 @@ export default class QuoteAdmin extends Component {
                     </div>
                   </div>
                 </form>
-              </div>
-              <div className="column is-two-thirds">
                 <div className="tile is-ancestor">
-                  <div className="tile is-4 is-parent is-vertical">
+                  <div className="tile is-parent is-vertical">
                     {this.state.quotes.map((quote, index) => (
                       <Quote
                         isAdmin={true}
