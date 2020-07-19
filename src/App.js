@@ -135,7 +135,7 @@ function App() {
   return (
     <div className="App page">
       <div className="columns">
-        <div className="column main timer-set">
+        <div className="column timer-set">
           {!isStarted && currentTimerType === "Work" &&
             <Work
               workTime={workTime}
@@ -173,7 +173,7 @@ function App() {
           </p>
 
         </div>
-        <div className="column">
+        <div className="column timer-info">
           {workCounter > 0 && !isStarted &&
             <p>Yay! You've completed {workCounter} work timer{workCounter > 1 ? "s." : "."}</p>
           }
