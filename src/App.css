@@ -1,5 +1,4 @@
 
-
 html,
 body {
   min-width: 500px;
@@ -44,7 +43,6 @@ h1 {
   height: 40vmin;
   pointer-events: none;
 }
-
 
 .App-header {
   background-color: #282c34;
@@ -110,7 +108,7 @@ h1 {
 /* Main */
 
 .main {
-  margin-top: 2em;
+  margin-top: 1em;
 }
 
 .features {
@@ -125,9 +123,10 @@ h1 {
 .work-time {
   font-weight: bold;
   font-size: medium;
+  padding: 15px;
 }
 
-.timer-set, .timer-info {
+.timer-set, .timer-info, .stats {
   padding: 15px;
 }
 
