@@ -4,7 +4,7 @@ import Work from './components/Work';
 import Break from './components/Break';
 import Countdown from './components/Countdown';
 import Quotes from './components/Quotes';
-import ShowQuote from './components/Quotes';
+import ShowQuote from './components/ShowQuote';
 import QuoteAdmin from './components/QuoteAdmin';
 import Notfound from './components/Notfound';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -181,7 +181,7 @@ function App() {
             <Switch>
               {/* <Route exact path="/" component={Home} /> */}
               <Route exact path="/quotes" component={Quotes} />
-              <Route exact path="/quote" component={ShowQuote} />
+              <Route exact path="/showquote" component={ShowQuote} />
               <Route exact path="/admin" component={QuoteAdmin} />
               {/* <Route component={Notfound} /> */}
             </Switch>
