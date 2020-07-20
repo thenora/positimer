@@ -19,7 +19,7 @@ const Stats = ({
         )}
         {breakCounter > 0 && !isStarted && (
           <p>
-            And you know when to take a break! You completed {breakCounter} break{breakCounter > 1 ? "s." : "."}
+            And you know when to take a break! You took {breakCounter} break{breakCounter > 1 ? "s." : "."}
           </p>
         )}
       </div>
