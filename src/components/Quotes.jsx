@@ -11,9 +11,6 @@ export default class Quotes extends Component {
 
   // TODO DRY up code and create a wrapper
   fetchQuotes = async () => {
-    // add call to AWS API Gateway to fetch quotes here
-    // then set them in state
-
     try {
       const res = await axios.get(`${config.api.invokeUrl}/quotes`);
       this.setState({ quotes: res.data });
