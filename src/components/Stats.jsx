@@ -1,0 +1,30 @@
+import React from "react";
+import moment from "moment";
+
+const Stats = ({
+  workCounter,
+  isStarted,
+  breakCounter,
+}) => {
+  
+
+  return (
+    <section className="section">
+      <div className="container">
+        {workCounter > 0 && !isStarted && (
+          <p>
+            Yay! You've completed {workCounter} work timer
+            {workCounter > 1 ? "s." : "."}
+          </p>
+        )}
+        {breakCounter > 0 && !isStarted && (
+          <p>
+            And you know when to take a break! You completed {breakCounter} break{breakCounter > 1 ? "s." : "."}
+          </p>
+        )}
+      </div>
+    </section>
+  );
+};
+
+export default Stats;

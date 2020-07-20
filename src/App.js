@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Work from './components/Work';
 import Break from './components/Break';
+import Stats from './components/Stats';
 import Countdown from './components/Countdown';
 import Quotes from './components/Quotes';
 import ShowQuote from './components/ShowQuote';
@@ -179,19 +180,21 @@ function App() {
         <div className="column timer-info">
           <Router>
             <Switch>
-              {/* <Route exact path="/" component={Home} /> */}
               <Route exact path="/quotes" component={Quotes} />
-              <Route exact path="/showquote" component={ShowQuote} />
+              {/* <Route exact path="/" component={Home} /> */}
+              {isStarted && currentTimerType === "Work" &&
+                <Route exact path="/showquote" component={ShowQuote} />
+              }
+              
               <Route exact path="/admin" component={QuoteAdmin} />
               {/* <Route component={Notfound} /> */}
             </Switch>
           </Router>
-          {workCounter > 0 && !isStarted &&
-            <p>Yay! You've completed {workCounter} work timer{workCounter > 1 ? "s." : "."}</p>
-          }
-          {breakCounter > 0 && !isStarted &&
-            <p>And you're not "all-work-and-no-play" with {breakCounter} completed break{breakCounter > 1 ? "s." : "."}</p>
-          }
+          <Stats
+            workCounter={workCounter}
+            isStarted={isStarted}
+            breakCounter={breakCounter}
+          />
         </div>
       </div>
       <audio id="alarm" ref={audioElement}>
