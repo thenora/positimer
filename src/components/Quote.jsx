@@ -44,7 +44,7 @@ export default class QuoteAdmin extends Component {
               <p>Edit phrase</p>
               <input 
                 className="input is-medium"
-                type="text" 
+                type="text"
                 placeholder="Enter quote"
                 value={this.state.updatedphrase}
                 onChange={this.onAddPhraseChange}
