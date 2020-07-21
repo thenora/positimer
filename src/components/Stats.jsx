@@ -6,7 +6,6 @@ const Stats = ({
   isStarted,
   breakCounter,
 }) => {
-  
 
   return (
     <section className="section">
