@@ -20,7 +20,7 @@ export default class QuoteAdmin extends Component {
         id: id,
         phrase: this.state.newquote.phrase,
       };
-      await axios.get(`${config.api.invokeUrl}/quotes/${id}`, params);
+      await axios.post(`${config.api.invokeUrl}/quotes/${id}`, params);
       this.setState({ newquote: { phrase: "", id: "" } });
     } catch (err) {
       console.log(`Oops! There was an error: ${err}`);
@@ -134,7 +134,7 @@ export default class QuoteAdmin extends Component {
                     {this.state.quotes.map((quote, index) => (
                       <Quote
                         isAdmin={true}
-                        handleUpdateQuote={this.handleUpdateQuote}
+                        // handleUpdateQuote={this.handleUpdateQuote}
                         handleDeleteQuote={this.handleDeleteQuote}
                         quote={quote.phrase}
                         id={quote.id}
