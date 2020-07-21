@@ -25,7 +25,7 @@ export default class QuoteAdmin extends Component {
     return (
       <div className="tile is-child box notification is-success">
         {
-          this.props.isAdmin && 
+          this.props.isAdmin &&
           <Fragment>
             {/* TODO Why isn't icon working? */}
             <button onClick={this.handleQuoteEdit} className="quote-edit-icon icon small">
@@ -39,10 +39,10 @@ export default class QuoteAdmin extends Component {
           </Fragment>
         }
         {
-          this.state.isEditMode 
+          this.state.isEditMode
           ? <div>
               <p>Edit phrase</p>
-              <input 
+              <input
                 className="input is-medium"
                 type="text"
                 placeholder="Enter quote"
