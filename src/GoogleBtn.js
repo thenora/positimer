@@ -47,13 +47,13 @@ class GoogleBtn extends Component {
     <div>
       { this.state.isLoggedIn ?
         <GoogleLogout
-          clientId={ CLIENT_ID }
+          clientId={ process.env.REACT_APP_CLIENT_ID }
           buttonText='Logout'
           onLogoutSuccess={ this.logout }
           onFailure={ this.handleLogoutFailure }
         >
         </GoogleLogout>: <GoogleLogin
-          clientId={ CLIENT_ID }
+          clientId={ process.env.REACT_APP_CLIENT_ID }
           buttonText='Login'
           onSuccess={ this.login }
           onFailure={ this.handleLoginFailure }
