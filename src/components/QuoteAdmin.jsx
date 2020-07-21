@@ -5,6 +5,7 @@ const config = require("../config.json");
 
 export default class QuoteAdmin extends Component {
   state = {
+    maxID: null,
     newquote: {
       phrase: "",
       id: "",
@@ -22,6 +23,7 @@ export default class QuoteAdmin extends Component {
       };
       await axios.post(`${config.api.invokeUrl}/quotes/${id}`, params);
       this.setState({ newquote: { phrase: "", id: "" } });
+      this.fetchQuotes();
     } catch (err) {
       console.log(`Oops! There was an error: ${err}`);
     }
@@ -77,6 +79,12 @@ export default class QuoteAdmin extends Component {
     }
   };
 
+  // findMaxID = () => {
+  //   Math.max.apply(Math, this.state.quotes.map(function(quote) { return}
+  //     if (parseInt(quote.id, 10))
+  //   ));
+  // };
+
   onAddPhraseChange = (event) =>
     this.setState({
       newquote: { ...this.state.newquote, phrase: event.target.value },
@@ -131,7 +139,7 @@ export default class QuoteAdmin extends Component {
                 </form>
                 <div className="tile is-ancestor">
                   <div className="tile is-parent is-vertical">
-                    {this.state.quotes.map((quote, index) => (
+                    {this.state.quotes.map((quote) => (
                       <Quote
                         isAdmin={true}
                         // handleUpdateQuote={this.handleUpdateQuote}
