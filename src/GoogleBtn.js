@@ -65,7 +65,7 @@ class GoogleBtn extends Component {
           />
         }
         <div>
-          {this.state.googleName ? <p>Hiya { this.state.googleName }!</p> : null }
+          {(this.state.isLoggedIn && this.state.googleName) ? <p>Hiya { this.state.googleName }!</p> : null }
           {/* { this.state.accessToken ? <h5>Your Access Token: <br/><br/> { this.state.accessToken }</h5> : null } */}
         </div>
       </div>
