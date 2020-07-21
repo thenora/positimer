@@ -14,7 +14,6 @@ export default class QuoteAdmin extends Component {
 
   handleAddQuote = async (id, event) => {
     event.preventDefault();
-    // add call to AWS API Gateway add quote endpoint here
 
     try {
       const params = {
@@ -96,10 +95,7 @@ export default class QuoteAdmin extends Component {
       <Fragment>
         <section className="section">
           <div className="container">
-            <h1>Quote Admin</h1>
-            <p className="subtitle is-5">
-              Add and remove quotes using the form below:
-            </p>
+            <h2>Quote Admin</h2>
             <br />
             <div className="columns">
               <div className="column">
@@ -117,8 +113,6 @@ export default class QuoteAdmin extends Component {
                         value={this.state.newquote.phrase}
                         onChange={this.onAddPhraseChange}
                       />
-                    </div>
-                    <div className="control">
                       <input
                         className="input is-medium"
                         type="text"
@@ -126,8 +120,6 @@ export default class QuoteAdmin extends Component {
                         value={this.state.newquote.id}
                         onChange={this.onAddQuoteIdChange}
                       />
-                    </div>
-                    <div>
                       <button
                         type="submit"
                         className="button is-primary is-medium"

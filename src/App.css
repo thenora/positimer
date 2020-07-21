@@ -31,6 +31,10 @@ h2 {
   font-size: 1.75em;
 }
 
+.input {
+  margin: 5px;
+}
+
 .timer-label {
   font-size: 1.25em;
 }
