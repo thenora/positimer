@@ -7,6 +7,8 @@ import Countdown from './components/Countdown';
 import Quotes from './components/Quotes';
 import ShowQuote from './components/ShowQuote';
 import QuoteAdmin from './components/QuoteAdmin';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import GoogleBtn from './GoogleBtn';
 import Notfound from './components/Notfound';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
@@ -140,6 +142,8 @@ function App() {
 
 
         <div className="column timer-set">
+          <GoogleBtn />
+          {console.log(process.env.REACT_APP_CLIENT_ID)}
           {!isStarted && currentTimerType === "Work" &&
             <Work
               workTime={workTime}
@@ -178,6 +182,9 @@ function App() {
 
         </div>
         <div className="column timer-info">
+          {isStarted && currentTimerType === "Work" &&
+            <ShowQuote />
+          }
           <Router>
             <Switch>
               <Route exact path="/quotes" component={Quotes} />
@@ -185,9 +192,10 @@ function App() {
               {isStarted && currentTimerType === "Work" &&
                 <Route exact path="/showquote" component={ShowQuote} />
               }
-              
+
               <Route exact path="/admin" component={QuoteAdmin} />
               {/* <Route component={Notfound} /> */}
+              <Route exact path="/privacypolicy" component={PrivacyPolicy} />
             </Switch>
           </Router>
           <Stats
