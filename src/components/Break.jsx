@@ -5,7 +5,6 @@ const Break = ({
   breakTime,
   lowerBreakTimeByOneMinute,
   raiseBreakTimeByOneMinute,
-  skipBreak,
 }) => {
   const breakTimeInMinutes = moment.duration(breakTime, "s").asMinutes();
 

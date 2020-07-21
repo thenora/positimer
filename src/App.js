@@ -10,8 +10,6 @@ import QuoteAdmin from './components/QuoteAdmin';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import GoogleBtn from './GoogleBtn';
 import Notfound from './components/Notfound';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import * as workerInterval from 'worker-interval';
 import './App.css';
 
@@ -33,7 +31,13 @@ function App() {
     } else if (currentTimerType === "Break") {
       setCountdown(breakTime);
     }
-  }, [workTime, breakTime]);
+  }, [workTime, breakTime, currentTimerType]);
+
+  useEffect(() => {
+    if (workCounter === 4) {
+      setBreakTime(1500);
+    }
+  }, [workCounter])
 
   const lowerWorkTimeByOneMinute = () => {
     const newWorkTime = workTime - 60;
@@ -154,6 +158,7 @@ function App() {
           {!isStarted && currentTimerType === "Break" &&
             <Break
               breakTime={breakTime}
+              breakCounter={breakCounter}
               lowerBreakTimeByOneMinute={lowerBreakTimeByOneMinute}
               raiseBreakTimeByOneMinute={raiseBreakTimeByOneMinute}
             />
@@ -167,8 +172,9 @@ function App() {
             handleStartStopClick={handleStartStopClick}
             startStopButtonLabel={isStarted ? "Stop" : "Start"}
             countdown={countdown}
+            breakCounter={breakCounter}
           />
-          {/* TODO change skip button to link */}
+          {/* ? Do I change skip button to link? */}
           {!isStarted && currentTimerType === "Break" &&
             <p>
               <button className="button is-secondary is-medium skip-break" onClick={skipBreak}>
