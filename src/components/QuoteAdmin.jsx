@@ -28,28 +28,28 @@ export default class QuoteAdmin extends Component {
     }
   };
 
-  handleUpdateQuote = async (id, quote) => {
-    // add call to AWS API Gateway update quote endpoint here
+  // handleUpdateQuote = async (id, quote) => {
+  //   // add call to AWS API Gateway update quote endpoint here
 
-    try {
-      const params = {
-        id: id,
-        phrase: quote,
-      };
-      await axios.patch(`${config.api.invokeUrl}/quotes/${id}`, params);
-      const quoteToUpdate = [...this.state.quotes].find(
-        (quote) => quote.id === id
-      );
-      const updatedQuotes = [...this.state.quotes].filter(
-        (quote) => quote.id !== id
-      );
-      quoteToUpdate.phrase = quote;
-      updatedQuotes.push(quoteToUpdate);
-      this.setState({ quotes: updatedQuotes });
-    } catch (err) {
-      console.log(`Oops! There was an error updating the quote: ${err}`);
-    }
-  };
+  //   try {
+  //     const params = {
+  //       id: id,
+  //       phrase: quote,
+  //     };
+  //     await axios.patch(`${config.api.invokeUrl}/quotes/${id}`, params);
+  //     const quoteToUpdate = [...this.state.quotes].find(
+  //       (quote) => quote.id === id
+  //     );
+  //     const updatedQuotes = [...this.state.quotes].filter(
+  //       (quote) => quote.id !== id
+  //     );
+  //     quoteToUpdate.phrase = quote;
+  //     updatedQuotes.push(quoteToUpdate);
+  //     this.setState({ quotes: updatedQuotes });
+  //   } catch (err) {
+  //     console.log(`Oops! There was an error updating the quote: ${err}`);
+  //   }
+  // };
 
   handleDeleteQuote = async (id, event) => {
     event.preventDefault();
