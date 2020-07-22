@@ -1,5 +1,11 @@
-import React from 'react'
+import React from "react";
 
-const Notfound = () => <h1>Not found</h1>
-// TODO set timer to 4:04 Add Message to Not Found
-export default Notfound
+const Notfound = () => (
+  <div className="container">
+    <div className="section">
+    <h1>Not Found</h1>
+    <p className="clock">04:04</p>
+    </div>
+  </div>
+);
+export default Notfound;
