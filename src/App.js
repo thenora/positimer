@@ -30,7 +30,7 @@ function App() {
           <Route exact path="/quotes" component={Quotes} />
           <Route exact path="/admin" component={QuoteAdmin} />
           <Route exact path="/privacy" component={PrivacyPolicy} />
-
+          <Route component={Notfound} />
         </Switch>
         <Footer />
       </Router>
