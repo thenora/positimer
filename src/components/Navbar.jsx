@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import GoogleBtn from '../GoogleBtn';
+import React, { Component } from "react";
+import GoogleBtn from "../GoogleBtn";
 
 export default class Navbar extends Component {
   constructor(props) {
@@ -7,8 +7,8 @@ export default class Navbar extends Component {
 
     this.state = {
       isLoggedIn: false,
-      accessToken: '',
-      googleName: ''
+      accessToken: "",
+      googleName: "",
     };
 
     this.login = this.login.bind(this);
@@ -19,30 +19,29 @@ export default class Navbar extends Component {
 
   login(response) {
     if (response.accessToken) {
-      console.log(response)
-      this.setState(state => ({
+      console.log(response);
+      this.setState((state) => ({
         isLoggedIn: true,
         accessToken: response.accessToken,
-        googleName: response.profileObj.givenName
+        googleName: response.profileObj.givenName,
       }));
     }
   }
 
   logout(response) {
-    this.setState(state => ({
+    this.setState((state) => ({
       isLoggedIn: false,
-      accessToken: ''
+      accessToken: "",
     }));
   }
 
   handleLoginFailure(response) {
-    alert('Failed to log in')
+    alert("Failed to log in");
   }
 
   handleLogoutFailure(response) {
-    alert('Failed to log out')
+    alert("Failed to log out");
   }
-
 
   render() {
     return (
@@ -61,27 +60,37 @@ export default class Navbar extends Component {
             <a href="/about" className="navbar-item">
               About
             </a>
-            <a href="/quotes" className="navbar-item">
-              Quotes
-            </a>
-            <a href="/admin" className="navbar-item">
-              Edit
-            </a>
+            {this.state.isLoggedIn && (
+              <a href="/quotes" className="navbar-item">
+                Quotes
+              </a>
+            )}
+            {/* TODO create user types and make this user an admin, not just be named Nora */}
+            {this.state.isLoggedIn && this.state.googleName === "Nora" && (
+              <a href="/admin" className="navbar-item">
+                Edit
+              </a>
+            )}
           </div>
 
           <div className="navbar-end">
             <div className="navbar-item">
-                <GoogleBtn
+              {this.state.isLoggedIn && this.state.googleName &&
+                <p>Hiya {this.state.googleName}!</p>
+              }
+            </div>
+            <div className="navbar-item">
+              <GoogleBtn
                 isLoggedIn={this.state.isLoggedIn}
                 googleName={this.state.googleName}
                 login={this.login}
                 logout={this.logout}
                 accessToken={this.state.accessToken}
-                />
+              />
             </div>
           </div>
         </div>
       </nav>
-    )
+    );
   }
 }
