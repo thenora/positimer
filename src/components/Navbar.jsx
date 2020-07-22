@@ -1,5 +1,7 @@
-import React, { Component } from "react";
+import React, { Component, useContext } from "react";
 import GoogleBtn from "../GoogleBtn";
+import ls from 'local-storage';
+
 
 export default class Navbar extends Component {
   constructor(props) {
@@ -16,6 +18,7 @@ export default class Navbar extends Component {
     this.logout = this.logout.bind(this);
     this.handleLogoutFailure = this.handleLogoutFailure.bind(this);
   }
+
 
   login(response) {
     if (response.accessToken) {

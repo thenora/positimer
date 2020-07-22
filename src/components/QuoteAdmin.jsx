@@ -89,6 +89,7 @@ export default class QuoteAdmin extends Component {
     this.setState({
       newquote: { ...this.state.newquote, phrase: event.target.value },
     });
+
   onAddQuoteIdChange = (event) =>
     this.setState({
       newquote: { ...this.state.newquote, id: event.target.value },
@@ -106,6 +107,7 @@ export default class QuoteAdmin extends Component {
             <h2>Quote Admin</h2>
             <br />
             <div className="columns">
+              <div className="column"></div>
               <div className="column">
                 <form
                   onSubmit={(event) =>
@@ -142,7 +144,7 @@ export default class QuoteAdmin extends Component {
                     {this.state.quotes.map((quote) => (
                       <Quote
                         isAdmin={true}
-                        // handleUpdateQuote={this.handleUpdateQuote}
+                        handleUpdateQuote={this.handleUpdateQuote}
                         handleDeleteQuote={this.handleDeleteQuote}
                         quote={quote.phrase}
                         id={quote.id}
@@ -152,6 +154,7 @@ export default class QuoteAdmin extends Component {
                   </div>
                 </div>
               </div>
+              <div className="column"></div>
             </div>
           </div>
         </section>

@@ -1,44 +1,49 @@
-import React, { Component, Fragment }  from 'react';
+import React, { Component, Fragment } from "react";
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default class QuoteAdmin extends Component {
-
   state = {
     isEditMode: false,
-    updatedphrase: this.props.quote
-  }
+    updatedphrase: this.props.quote,
+  };
 
   // TODO I only want users to be able to edit items they created.
-  // handleQuoteEdit = event => {
-  //   event.preventDefault();
-  //   this.setState({ isEditMode: true });
-  // }
+  handleQuoteEdit = event => {
+    event.preventDefault();
+    this.setState({ isEditMode: true });
+  }
 
-  // handleEditSave = event => {
-  //   event.preventDefault();
-  //   this.setState({ isEditMode: false });
-  //   this.props.handleUpdateQuote(this.props.id, this.state.updatedphrase);
-  // }
+  handleEditSave = event => {
+    event.preventDefault();
+    this.setState({ isEditMode: false });
+    this.props.handleUpdateQuote(this.props.id, this.state.updatedphrase);
+  }
 
-  // onAddPhraseChange = event => this.setState({ "updatedphrase": event.target.value });
+  onAddPhraseChange = event => this.setState({ "updatedphrase": event.target.value });
 
   render() {
     return (
       <div className="tile is-child box notification is-success">
-        {
-          this.props.isAdmin &&
+        {this.props.isAdmin && (
           <Fragment>
             {/* TODO Why isn't icon working? */}
             {/* <button onClick={this.handleQuoteEdit} className="quote-edit-icon icon small"> */}
             {/* <a href="/" onClick={this.handleQuoteEdit} className="quote-edit-icon"> */}
-              {/* <FontAwesomeIcon icon="edit" /> */}
-              {/* Edit */}
+            {/* <FontAwesomeIcon icon="edit" /> */}
+            {/* Edit */}
             {/* </button> */}
             {/* </a> */}
             {/* TODO Do I want delete accessible? */}
-            <button onClick={event => this.props.handleDeleteQuote(this.props.id, event)} className="delete">Delete</button>
+            <button
+              onClick={(event) =>
+                this.props.handleDeleteQuote(this.props.id, event)
+              }
+              className="delete"
+            >
+              Delete
+            </button>
           </Fragment>
-        }
+        )}
         {
           // this.state.isEditMode
           // ? <div>
@@ -56,13 +61,12 @@ export default class QuoteAdmin extends Component {
           //       onClick={ this.handleEditSave }
           //     >save</button>
           //   </div>
-          // : 
+          // :
           <div>
-              <p className="quote-title">{ this.props.quote }</p>
-              {/* <p className="quote-id">id: { this.props.id }</p> */}
-            </div>
+            <p className="quote-title">{this.props.quote}</p>
+          </div>
         }
       </div>
-    )
+    );
   }
 }

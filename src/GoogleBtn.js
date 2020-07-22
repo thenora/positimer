@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 
-
 class GoogleBtn extends Component {
+  
 
   render(
   ) {
