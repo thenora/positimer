@@ -10,13 +10,19 @@ const Work = ({
 
   return (
     <section className="section">
-      <div className="container">
-        <h3 className="work-label">How long should your work timer be?</h3>
+      <div className="container content is-medium">
+        <p className="work-label">How long should your work timer be?</p>
         <p className="work-time">{workTimeInMinutes}</p>
-        <button className="button is-secondary is-small work-lower" onClick={lowerWorkTimeByOneMinute}>
+        <button
+          className="button is-secondary is-medium work-lower"
+          onClick={lowerWorkTimeByOneMinute}
+        >
           -
         </button>
-        <button className="button is-secondary is-small work-raise" onClick={raiseWorkTimeByOneMinute}>
+        <button
+          className="button is-secondary is-medium work-raise"
+          onClick={raiseWorkTimeByOneMinute}
+        >
           +
         </button>
       </div>
