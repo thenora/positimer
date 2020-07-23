@@ -106,7 +106,7 @@ export default class QuoteAdmin extends Component {
             <div className="columns">
               <div className="column"></div>
               <div className="column">
-                <h1 className="">Quote Admin</h1>
+                <h1 className="title">Quote Admin</h1>
                 <form
                   onSubmit={(event) =>
                     this.handleAddQuote(this.state.newquote.id, event)
@@ -124,7 +124,7 @@ export default class QuoteAdmin extends Component {
                       <input
                         className="input is-medium"
                         type="text"
-                        placeholder="Enter id"
+                        placeholder="Enter author"
                         value={this.state.newquote.id}
                         onChange={this.onAddQuoteIdChange}
                       />

@@ -28,7 +28,7 @@ export default class Quotes extends Component {
       <Fragment>
         <section className="section">
           <div className="container">
-            <h1>Words to Motivate</h1>
+            <h1 className="title">Words to Motivate</h1>
             <div className="columns">
               <div className="column"></div>
               <div className="column">
