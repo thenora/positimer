@@ -8,6 +8,9 @@ export default function Footer() {
         <p>
           <a href="/privacy">Privacy Policy</a>
         </p>
+        <p>
+          Visit <a href="http://thepositimer.com">ThePositimer.com</a>
+        </p>
       </div>
     </footer>
   );

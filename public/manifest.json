@@ -1,26 +1,19 @@
-
 {
   "short_name": "Positimer",
   "name": "Positimer Pomodoro-style Timer",
-  "icons": [
-    {
-      "src": "picon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    }
-    // {
-    //   "src": "picon.png",
-    //   "type": "image/png",
-    //   "sizes": "192x192"
-    // },
-    // {
-    //   "src": "picon.png",
-    //   "type": "image/png",
-    //   "sizes": "512x512"
-    // }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "author": "Nora Robertson",
+  "manifest_version": 2,
+  "version": "0.1",
+  "icons": {
+    "16": "picon.ico",
+    "48": "picon.png",
+    "64": "picon.png"
+  },
+  "content_security_policy": "script-src 'self' 'sha256-QAF3m0DIEpS3Fk2LYxGY9CPf4bO/odm/fKz4y4ndSxw='; object-src 'self'",
+  "permissions": ["storage"],
+  "browser_action": {
+    "default_popup": "/index.html",
+    "default_title": "Positimer Widget",
+    "default_icon": "picon.png"
+  }
 }

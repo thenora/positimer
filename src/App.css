@@ -100,10 +100,6 @@ h2 {
 
 /* Main */
 
-.main {
-  margin-top: 1em;
-}
-
 .features {
   padding-bottom: 3em;
 }
@@ -116,8 +112,8 @@ h2 {
 .work-time,
 .break-time {
   font-weight: bold;
-  font-size: xx-large;
-  padding: 15px;
+  font-size: large;
+  padding: 5px;
 }
 
 .timer-set,

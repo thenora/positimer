@@ -95,7 +95,7 @@ export default function Home() {
       // 1000 ms is 1 second
       const newIntervalId = workerInterval.setInterval(() => {
         setCountdown((prevCountdown) => prevCountdown - 1);
-      }, 100); // TODO reset to 1000
+      }, 1000); // TODO reset to 1000
       setIntervalId(newIntervalId);
     }
   };
@@ -142,7 +142,7 @@ export default function Home() {
 
   return (
     <Fragment>
-      <div className="columns">
+      <div className="columns is-gapless">
         <div className="column timer-set">
           {!isStarted && currentTimerType === "Work" && (
             <Work
