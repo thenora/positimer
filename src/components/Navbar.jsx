@@ -1,16 +1,17 @@
-import React, { Component, useContext } from "react";
+import React, { Component} from "react";
 import GoogleBtn from "../GoogleBtn";
-import ls from 'local-storage';
-
 
 export default class Navbar extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      isLoggedIn: false,
+      // isLoggedIn: false,
+      isLoggedIn: localStorage.getItem("isLoggedIn") || false,
       accessToken: "",
-      googleName: "",
+      // accessToken: localStorage.getItem("accessToken") || "",
+      // googleName: "",
+      googleName: localStorage.getItem("googleName") || "",
     };
 
     this.login = this.login.bind(this);
@@ -18,7 +19,6 @@ export default class Navbar extends Component {
     this.logout = this.logout.bind(this);
     this.handleLogoutFailure = this.handleLogoutFailure.bind(this);
   }
-
 
   login(response) {
     if (response.accessToken) {
@@ -28,6 +28,8 @@ export default class Navbar extends Component {
         accessToken: response.accessToken,
         googleName: response.profileObj.givenName,
       }));
+      localStorage.setItem("isLoggedIn", true);
+      localStorage.setItem("googleName", response.profileObj.givenName);
     }
   }
 
@@ -35,7 +37,9 @@ export default class Navbar extends Component {
     this.setState((state) => ({
       isLoggedIn: false,
       accessToken: "",
+      googleName: "",
     }));
+    localStorage.clear();
   }
 
   handleLoginFailure(response) {
@@ -78,9 +82,9 @@ export default class Navbar extends Component {
 
           <div className="navbar-end">
             <div className="navbar-item">
-              {this.state.isLoggedIn && this.state.googleName &&
+              {this.state.isLoggedIn && this.state.googleName && (
                 <p>Hiya {this.state.googleName}!</p>
-              }
+              )}
             </div>
             <div className="navbar-item">
               <GoogleBtn
