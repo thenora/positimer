@@ -2,7 +2,6 @@ import React, { Component, Fragment }  from 'react';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default class QuoteAdmin extends Component {
-
   state = {
     isEditMode: false,
     updatedphrase: this.props.quote
@@ -59,7 +58,6 @@ export default class QuoteAdmin extends Component {
           // : 
           <div>
               <p className="quote-title">{ this.props.quote }</p>
-              {/* <p className="quote-id">id: { this.props.id }</p> */}
             </div>
         }
       </div>
