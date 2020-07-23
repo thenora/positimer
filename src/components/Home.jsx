@@ -133,7 +133,7 @@ export default function Home() {
     }
   };
 
-  const skipBreak = () => {
+  const handleSkipBreakClick = () => {
     workerInterval.clearInterval(intervalId);
     setCountdown(workTime);
     setCurrentTimerType("Work");
@@ -169,30 +169,12 @@ export default function Home() {
             startStopButtonLabel={isStarted ? "Stop" : "Start"}
             countdown={countdown}
             breakCounter={breakCounter}
+            isStarted={isStarted}
+            skipBreak={handleSkipBreakClick}
+            handleResetButtonClick={handleResetButtonClick}
           />
-          {/* ? Do I change skip button to link? */}
-          {!isStarted && currentTimerType === "Break" && (
-            <p>
-              <button
-                className="button is-secondary is-medium skip-break"
-                onClick={skipBreak}
-              >
-                Skip Break
-              </button>
-            </p>
-          )}
-          <p>
-            <button
-              className="button is-secondary is-medium reset"
-              onClick={handleResetButtonClick}
-            >
-              Reset
-            </button>
-          </p>
         </div>
         <div className="column timer-info">
-          {/* {isStarted && currentTimerType === "Work" && <ShowQuote />} */}
-
           {isStarted && currentTimerType === "Work" && <ShowQuote />}
 
           <Stats
