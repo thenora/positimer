@@ -27,8 +27,10 @@ export default function Home() {
   }, [workTime, breakTime, currentTimerType]);
 
   useEffect(() => {
-    if (workCounter === 4) {
+    if (workCounter % 4 === 0) {
       setBreakTime(1500);
+    } else if (workCounter % 4 === 1) {
+      setBreakTime(300);
     }
   }, [workCounter]);
 
@@ -142,7 +144,6 @@ export default function Home() {
     <Fragment>
       <div className="columns">
         <div className="column timer-set">
-          {console.log(process.env.REACT_APP_CLIENT_ID)}
           {!isStarted && currentTimerType === "Work" && (
             <Work
               workTime={workTime}
@@ -192,9 +193,7 @@ export default function Home() {
         <div className="column timer-info">
           {/* {isStarted && currentTimerType === "Work" && <ShowQuote />} */}
 
-          {isStarted && currentTimerType === "Work" && (
-            <ShowQuote />
-          )}
+          {isStarted && currentTimerType === "Work" && <ShowQuote />}
 
           <Stats
             workCounter={workCounter}
