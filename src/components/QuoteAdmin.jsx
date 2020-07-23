@@ -103,10 +103,10 @@ export default class QuoteAdmin extends Component {
       <Fragment>
         <section className="section">
           <div className="container">
-            <h2>Quote Admin</h2>
-            <br />
             <div className="columns">
+              <div className="column"></div>
               <div className="column">
+                <h1 className="">Quote Admin</h1>
                 <form
                   onSubmit={(event) =>
                     this.handleAddQuote(this.state.newquote.id, event)
@@ -152,6 +152,7 @@ export default class QuoteAdmin extends Component {
                   </div>
                 </div>
               </div>
+              <div className="column"></div>
             </div>
           </div>
         </section>
