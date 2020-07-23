@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import Quote from "./Quote";
 import axios from "axios";
+import Pagination from 'bulma-pagination-react';
 const config = require("../config.json");
 
 export default class Quotes extends Component {
