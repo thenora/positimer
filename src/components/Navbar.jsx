@@ -78,9 +78,9 @@ export default class Navbar extends Component {
 
           <div className="navbar-end">
             <div className="navbar-item">
-              {this.state.isLoggedIn && this.state.googleName &&
+              {this.state.isLoggedIn && this.state.googleName && (
                 <p>Hiya {this.state.googleName}!</p>
-              }
+              )}
             </div>
             <div className="navbar-item">
               <GoogleBtn

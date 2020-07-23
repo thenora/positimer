@@ -26,7 +26,7 @@ const PrivacyPolicy = () => {
         <h3 className="heading title is-3">How the Information is used</h3>
         <p className="text">
           The information is used to enhance the vistor's experience when using
-          the website to display personalised content and possibly advertising.
+          the website to display personalized content and possibly advertising.
         </p>
 
         <p className="text">

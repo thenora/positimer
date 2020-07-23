@@ -6,9 +6,7 @@ export default function Footer() {
       <div className="content has-text-centered">
         <p>© Positimer 2020</p>
         <p>
-          <a href="/privacy">
-            Privacy Policy
-          </a>
+          <a href="/privacy">Privacy Policy</a>
         </p>
       </div>
     </footer>

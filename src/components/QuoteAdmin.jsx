@@ -54,7 +54,6 @@ export default class QuoteAdmin extends Component {
 
   handleDeleteQuote = async (id, event) => {
     event.preventDefault();
-    // add call to AWS API Gateway delete quote endpoint here
     try {
       await axios.delete(`${config.api.invokeUrl}/quotes/${id}`);
       const updatedQuotes = [...this.state.quotes].filter(
@@ -68,9 +67,6 @@ export default class QuoteAdmin extends Component {
 
   // TODO DRY up code and create a wrapper
   fetchQuotes = async () => {
-    // add call to AWS API Gateway to fetch quotes here
-    // then set them in state
-
     try {
       const res = await axios.get(`${config.api.invokeUrl}/quotes`);
       this.setState({ quotes: res.data });
@@ -79,6 +75,7 @@ export default class QuoteAdmin extends Component {
     }
   };
 
+  // TODO create default ID
   // findMaxID = () => {
   //   Math.max.apply(Math, this.state.quotes.map(function(quote) { return}
   //     if (parseInt(quote.id, 10))
