@@ -6,9 +6,9 @@ export default class Navbar extends Component {
     super(props);
 
     this.state = {
-      isLoggedIn: false,
+      isLoggedIn: localStorage.getItem("isLoggedIn") || false,
       accessToken: "",
-      googleName: "",
+      googleName: localStorage.getItem("googleName") || "",
     };
 
     this.login = this.login.bind(this);
@@ -25,6 +25,8 @@ export default class Navbar extends Component {
         accessToken: response.accessToken,
         googleName: response.profileObj.givenName,
       }));
+      localStorage.setItem("isLoggedIn", true);
+      localStorage.setItem("googleName", response.profileObj.givenName);
     }
   }
 
@@ -33,6 +35,7 @@ export default class Navbar extends Component {
       isLoggedIn: false,
       accessToken: "",
     }));
+    localStorage.clear();
   }
 
   handleLoginFailure(response) {
